@@ -20,7 +20,7 @@
             position: relative;
             width: 100%;
             height: 100%;
-            background: url('cyberpunk_cityscape.png') no-repeat center center;
+            background: url('cyberpunk_assets/cyberpunk_cityscape.png') no-repeat center center;
             background-size: cover;
             animation: flicker 1.5s infinite alternate;
         }
@@ -41,6 +41,19 @@
             from {text-shadow: 0 0 5px cyan, 0 0 10px cyan, 0 0 15px cyan;}
             to {text-shadow: 0 0 20px cyan, 0 0 30px cyan, 0 0 40px cyan;}
         }
+        .flying-car {
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            background-color: rgba(0, 255, 255, 0.7);
+            border-radius: 5px;
+            box-shadow: 0 0 10px cyan, 0 0 20px cyan;
+            animation: moveCar 10s linear infinite;
+        }
+        @keyframes moveCar {
+            0% {transform: translateX(-100%);}
+            100% {transform: translateX(110vw);}
+        }
     </style>
 </head>
 <body>
@@ -48,29 +61,17 @@
         <div class="neon-text">Welcome to the Cyber City</div>
     </div>
     <script>
-        // Simple animation script for the flying cars
         const scene = document.getElementById('cyberpunk-scene');
+        
         function createFlyingCar() {
             const car = document.createElement('div');
-            car.style.position = 'absolute';
-            car.style.width = '60px';
-            car.style.height = '30px';
-            car.style.backgroundColor = 'rgba(0, 255, 255, 0.7)';
-            car.style.borderRadius = '5px';
-            car.style.boxShadow = '0 0 10px cyan, 0 0 20px cyan';
+            car.classList.add('flying-car');
             car.style.top = Math.random() * window.innerHeight + 'px';
-            car.style.left = '-100px';
-            car.style.animation = 'moveCar 10s linear infinite';
             scene.appendChild(car);
         }
 
         for (let i = 0; i < 5; i++) {
             createFlyingCar();
-        }
-
-        @keyframes moveCar {
-            0% {transform: translateX(0);}
-            100% {transform: translateX(100vw);}
         }
     </script>
 </body>
